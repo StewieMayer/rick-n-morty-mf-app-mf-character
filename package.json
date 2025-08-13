@@ -20,6 +20,7 @@
   "description": "",
   "scripts": {
     "start": "webpack serve --config webpack.config.js",
+    "start:standalone": "webpack serve --config webpack.config.js --env standalone=true",
     "build": "webpack --config webpack.config.js",
     "test": "jest",
     "coverage": "jest --coverage"
