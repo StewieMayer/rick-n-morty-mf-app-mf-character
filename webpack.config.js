@@ -54,6 +54,11 @@ module.exports = (env) => {
             requiredVersion: dependencies["react-dom"],
             eager: standaloneMode,
           },
+          "react-router-dom": {
+            singleton: true,
+            requiredVersion: dependencies["react-router-dom"],
+            eager: standaloneMode,
+          },
         },
       }),
     ],
