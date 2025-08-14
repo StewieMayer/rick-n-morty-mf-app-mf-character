@@ -1,8 +1,13 @@
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import React from "react";
+import Characters from "./pages/characters/Characters";
+
 const App: React.FC = () => {
   return (
-    <div>
-      <h2>Bienvenidos al Himalaya!</h2>
-    </div>
+    <Provider store={store}>
+      <Characters />
+    </Provider>
   );
 };
 
