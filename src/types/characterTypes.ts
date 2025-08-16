@@ -37,4 +37,7 @@ export interface CharactersApiProps {
   species?: string;
 }
 
-export interface CharactersPageState extends CharactersApiProps {}
+export interface CharactersPageState extends CharactersApiProps {
+  currentCharacter: Character | null;
+  isModalOpen: boolean;
+}
