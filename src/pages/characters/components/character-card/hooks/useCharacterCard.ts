@@ -4,6 +4,7 @@ import {
 } from "@/app/features/characterSlice";
 import { useAppDispatch } from "@/app/features/hooks";
 import { Character } from "@/types/characterTypes";
+import { useNavigate } from "react-router-dom";
 
 export interface CharacterCardProps {
   character: Character;
@@ -18,6 +19,7 @@ export const useCharacterCard = ({
 }: CharacterCardProps) => {
   // Usefull Hooks
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   // Card Class Constructor
   const statusClasses: Record<string, string> = {
@@ -26,8 +28,9 @@ export const useCharacterCard = ({
     unknown: "bg-gray-300",
   };
 
-  const baseClass = "rounded-xl overflow-hidden bg-white border-2 border-gray-300 shadow-xl box-border";
-  const flexClass = "flex flex-col md:flex-row"  
+  const baseClass =
+    "rounded-xl overflow-hidden bg-white border-2 border-gray-300 shadow-xl box-border";
+  const flexClass = "flex flex-col md:flex-row";
   const sizeClass = `sm:w-100 md:w-full lg:w-${size}`;
   const hover = "hover:scale-105 hover:cursor-pointer";
 
@@ -45,9 +48,12 @@ export const useCharacterCard = ({
     dispatch(setIsModalOpen(false));
   };
 
+  const handleNavigate = () => navigate(`/character/${character.id}`);
+
   return {
     handleClick,
     handleCloseModal,
+    handleNavigate,
     statusClass: statusClasses[character.status],
     cardClass,
   };
