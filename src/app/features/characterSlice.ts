@@ -7,6 +7,8 @@ const initialState: CharactersPageState = {
   pages: 0,
   next: null,
   prev: null,
+  loading: false,
+  error: null,
   characters: [],
   currentCharacter: null,
   isModalOpen: false,
@@ -28,6 +30,12 @@ export const characterSlice = createSlice({
     setPrev: (state, action: PayloadAction<string | null>) => {
       state.prev = action.payload;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
     setCharacters: (state, action: PayloadAction<Character[]>) => {
       state.characters = action.payload;
     },
@@ -48,6 +56,8 @@ export const {
   setPages,
   setNext,
   setPrev,
+  setLoading,
+  setError,
   setCharacters,
   setCurrentCharacter,
   setIsModalOpen,
