@@ -13,7 +13,7 @@ const CloseModalButton: React.FC<CloseModalButtonProps> = ({ onClick }) => {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="size-10 text-white bg-gray-300/50 border border-white/50 rounded-full hover:cursor-pointer hover:bg-white/50"
+        className="size-8 text-white bg-gray-300/50 border border-white/50 rounded-full hover:cursor-pointer hover:bg-white/50"
       >
         <path
           strokeLinecap="round"
