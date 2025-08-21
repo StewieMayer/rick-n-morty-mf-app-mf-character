@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCharacterCard, CharacterCardProps } from "./hooks/useCharacterCard";
-import { Character, Location } from "@/types/characterTypes";
-import CloseModalButton from "../../../../components/modal/CloseModalButton";
+import CloseModalButton from "@components/modal/CloseModalButton";
+
 import { Button } from "@headlessui/react";
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
@@ -9,7 +9,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   size = "md",
   full = false,
 }) => {
-  const { id, name, image, status, species, origin, location, gender, type } =
+  const { name, image, status, species, origin, location, gender, type } =
     character;
   const {
     cardClass,

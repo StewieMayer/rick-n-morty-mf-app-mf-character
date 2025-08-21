@@ -13,7 +13,6 @@ const CharacterContainer: React.FC = () => {
       {characters.map((character: Character) => (
         <CharacterCard
           character={character}
-          size="md"
           key={customKey([character.id, character.name])}
         />
       ))}
