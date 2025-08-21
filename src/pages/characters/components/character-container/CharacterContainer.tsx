@@ -6,20 +6,15 @@ import customKey from "@/utils/customKey";
 import Loader from "@/components/Loader";
 
 const CharacterContainer: React.FC = () => {
-  const {
-    characters,
-    isModalOpen,
-    currentCharacter,
-    loading,
-    isLoading,
-    onClose,
-  } = useCharacterContainer();
+  const { characters, isModalOpen, currentCharacter, loading, onClose } =
+    useCharacterContainer();
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 p-4">
-      {isLoading || loading ? (
+      {loading ? (
         <Loader />
-      ) : characters && (
+      ) : (
+        characters &&
         characters.map((character: Character) => (
           <CharacterCard
             character={character}

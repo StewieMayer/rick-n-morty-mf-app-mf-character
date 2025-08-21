@@ -1,5 +1,5 @@
 import { useGetCharactersMutation } from "@/app/features/charactersApi";
-import { selectCharacter, setCharacters, setCount,setPages,setNext,setPrev } from "@/app/features/characterSlice";
+import { selectCharacter, setCharacters, setCount,setPages,setNext,setPrev, setLoading, setError, clearState } from "@/app/features/characterSlice";
 import { useAppDispatch, useAppSelector } from "@/app/features/hooks";
 import { setIsModalOpen } from "@/app/features/characterSlice";
 import { RootState } from "@/app/store";
@@ -16,10 +16,11 @@ const useCharacterContainer = () => {
     characterState;
   const onClose = () => dispatch(setIsModalOpen(!isModalOpen));
 
-  const [getCharacters, { isLoading, isError }] =
+  const [getCharacters] =
     useGetCharactersMutation();
 
   useEffect(() => {
+    dispatch(setLoading(true))
     getCharacters({})
       .unwrap()
       .then(({info:{count,pages,next,prev},results}) => {
@@ -28,7 +29,11 @@ const useCharacterContainer = () => {
         dispatch(setNext(next))
         dispatch(setPrev(prev))
         dispatch(setCharacters(results));
-      });
+      }).catch((error)=>{
+        dispatch(clearState())
+        dispatch(setCharacters([]))
+        dispatch(setError(error))
+      }).finally(()=>dispatch(setLoading(false)));
   }, []);
 
   return {
@@ -37,8 +42,6 @@ const useCharacterContainer = () => {
     isModalOpen,
     characters,
     loading,
-    isLoading,
-    isError,
   };
 };
 
