@@ -19,14 +19,14 @@ export const characterSlice = createSlice({
     setCount: (state, action: PayloadAction<number>) => {
       state.count = action.payload;
     },
-    setPages: (state, action:PayloadAction<number>)=>{
-      state.pages = action.payload
+    setPages: (state, action: PayloadAction<number>) => {
+      state.pages = action.payload;
     },
-    setNext: (state, action:PayloadAction<string | null>)=>{
-      state.next= action.payload
+    setNext: (state, action: PayloadAction<string | null>) => {
+      state.next = action.payload;
     },
-    setPrev: (state, action: PayloadAction<string | null >)=>{
-      state.prev = action.payload
+    setPrev: (state, action: PayloadAction<string | null>) => {
+      state.prev = action.payload;
     },
     setCharacters: (state, action: PayloadAction<Character[]>) => {
       state.characters = action.payload;
@@ -36,6 +36,9 @@ export const characterSlice = createSlice({
     },
     setIsModalOpen: (state, action: PayloadAction<boolean>) => {
       state.isModalOpen = action.payload;
+    },
+    clearState: (state) => {
+      state = initialState;
     },
   },
 });
@@ -48,6 +51,7 @@ export const {
   setCharacters,
   setCurrentCharacter,
   setIsModalOpen,
+  clearState,
 } = characterSlice.actions;
 export const selectCharacter = (state: RootState): CharactersPageState =>
   state.character;
