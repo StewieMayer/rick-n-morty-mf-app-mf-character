@@ -50,7 +50,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           </div>
         )}
         <div className="invisible h-0 md:h-auto md:visible flex flex-col">
-          <h2 className="font-bold text-3xl lg:text-xl text-gray-800">
+          <h2 className="font-bold text-3xl md:text-xl text-gray-800">
             {name}
           </h2>
           <div className="flex gap-1 items-center font-semibold text-sm text-gray-500">
@@ -65,7 +65,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           <>
             {/* Tipo */}
             {type && (
-              <div className="flex flex-col text-2xl lg:text-sm">
+              <div className="flex flex-col text-xl md:text-sm">
                 <h3 className="font-bold text-gray-600">Tipo:</h3>
                 <span className="flex items-center font-semibold text-gray-500 hover:text-blue-500">
                   {type}
@@ -73,7 +73,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
               </div>
             )}
             {/* Genero */}
-            <div className="flex flex-col text-2xl lg:text-sm">
+            <div className="flex flex-col text-xl md:text-sm">
               <h3 className="font-bold text-gray-600">Genero:</h3>
               <span className="flex items-center font-semibold text-gray-500 hover:text-blue-500">
                 {gender}
@@ -82,7 +82,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           </>
         )}
         {/* Origen */}
-        <div className="flex flex-col text-2xl lg:text-sm">
+        <div className="flex flex-col text-xl md:text-sm">
           <h3 className="font-bold text-gray-600">Origen: </h3>
           <Link
             to="/"
@@ -92,7 +92,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           </Link>
         </div>
         {/* Ultimo lugar visto */}
-        <div className="flex flex-col text-2xl lg:text-sm">
+        <div className="flex flex-col text-xl md:text-sm">
           <h3 className="font-bold text-gray-600">Visto por ultima vez en: </h3>
           <Link
             to="/"
@@ -103,7 +103,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         </div>
         {/* Enlace a la pagina del personaje */}
         {full && (
-          <div className="flex flex-1 justify-end items-end">
+          <div className="flex flex-1 justify-center mt-4 md:mt-0 md:justify-end items-end">
             <Button
               onClick={handleNavigate}
               className="bg-blue-600 border-2 border-blue-600 text-white font-bold hover:bg-blue-500 hover:cursor-pointer rounded-xl p-2"
