@@ -1,7 +1,10 @@
 import { useGetCharactersMutation } from "@/app/features/charactersApi";
 import {
+  clearState,
   setCharacters,
   setCount,
+  setError,
+  setLoading,
   setNext,
   setPages,
   setPrev,
@@ -34,18 +37,19 @@ const useCharacterForm = () => {
     else params.delete("species");
     if (status) params.set("status", status);
     else params.delete("status");
-    setParams(params)
+    setParams(params);
   };
 
-  const clearForm = () =>{
-    setName("")
-    setSpecies("")
-    setStatus("")
-  }
+  const clearForm = () => {
+    setName("");
+    setSpecies("");
+    setStatus("");
+  };
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    dispatch(setLoading(true));
     getCharacters({ name, species, status })
       .unwrap()
       .then(({ info: { count, pages, next, prev }, results }) => {
@@ -55,8 +59,14 @@ const useCharacterForm = () => {
         dispatch(setPrev(prev));
         dispatch(setCharacters(results));
         handleSetParams();
-        clearForm()
-      }).catch((error)=>{});
+        clearForm();
+      })
+      .catch((error) => {
+        dispatch(clearState());
+        dispatch(setCharacters([]));
+        dispatch(setError(error.message));
+      })
+      .finally(() => dispatch(setLoading(false)));
   };
 
   return {
