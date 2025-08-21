@@ -12,7 +12,7 @@ const useCharacterContainer = () => {
 
   const dispatch = useAppDispatch();
 
-  const { characters, currentCharacter, isModalOpen } =
+  const { characters, currentCharacter, isModalOpen, loading } =
     characterState;
   const onClose = () => dispatch(setIsModalOpen(!isModalOpen));
 
@@ -36,6 +36,7 @@ const useCharacterContainer = () => {
     currentCharacter,
     isModalOpen,
     characters,
+    loading,
     isLoading,
     isError,
   };
