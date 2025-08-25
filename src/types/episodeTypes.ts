@@ -9,10 +9,11 @@ export type Episode = {
 };
 
 export interface EpisodeDetailProps {
-  episodes: string[]
+  episodes: string[];
 }
 
 export interface UseEpisodeDetailResponse {
   isLoading: boolean;
   episodesData: Episode[];
+  episodeNav: (id: string) => void;
 }
